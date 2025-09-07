@@ -5,9 +5,18 @@ const catagor = () => {
     .then(res => res.json())
     .then(data => localcatagor(data.categories))
 }
-
+const loading = (load) =>{
+    if(load === true){
+        document.getElementById('loading').classList.remove('hidden')
+        document.getElementById('cata-card').classList.add('hidden')
+    }else{
+        document.getElementById('cata-card').classList.remove('hidden')
+        document.getElementById('loading').classList.add('hidden')
+    }
+}
 
 const catagorCard =() =>{
+    loading(true);
     const url='https://openapi.programming-hero.com/api/plants'
     fetch(url)
     .then(res => res.json())
@@ -34,6 +43,7 @@ const cardModalDatils =(card) =>{
 const localcatagorCard = (catagoricard) =>{
     // console.log(catagoricard)
     const creatCatagoriCard=document.getElementById('cata-card')
+    creatCatagoriCard.innerHTML=''
     catagoricard.forEach(card =>{
         const div=document.createElement('div')
         div.innerHTML=`
@@ -50,6 +60,7 @@ const localcatagorCard = (catagoricard) =>{
         `
         creatCatagoriCard.appendChild(div)
     })
+    loading(false);
 }
 
 const itemCategorySection = (word) =>{
@@ -72,6 +83,7 @@ const itemCategorySection = (word) =>{
         `
         items.appendChild(div)
     })
+    loading(false)
 }
 
 const creatIdremove=()=>{
@@ -80,6 +92,7 @@ const creatIdremove=()=>{
 }
 
 const itemCategory =(id) => {
+    loading(true);
     const url=`https://openapi.programming-hero.com/api/category/${id}`
     fetch(url)
     .then(res => res.json())
