@@ -22,8 +22,8 @@ const cardModalDatils =(card) =>{
     modalContainar.innerHTML=`
     <h3 class="pl-4 text-xl my-2 font-bold">${card.name}</h3>
     <img src="${card.image}" alt="${card.name}" class="w-[461px] h-[256px] p-4 rounded-xl"/>
-    <p class="font-semibold pl-4 py-1"><span class='font-semibold'>Category : </span>${card.category}</p>
-    <p class="font-semibold pl-4 py-1"><span class='font-semibold'>Price : </span> ৳ <span>${card.price}</span></p>       
+    <p class=" pl-4 py-1"><span class='font-semibold'>Category : </span>${card.category}</p>
+    <p class=" pl-4 py-1"><span class='font-semibold'>Price : </span> ৳ <span>${card.price}</span></p>       
     <p class="pl-4 pr-1 mb-2"><span class='font-semibold'>Description : </span>${card.description}</p>
     `
     document.getElementById('my_modal_5').showModal();
@@ -34,12 +34,12 @@ const localcatagorCard = (catagoricard) =>{
     catagoricard.forEach(card =>{
         const div=document.createElement('div')
         div.innerHTML=`
-        <div class="w-[341px] h-full bg-white rounded-xl" onclick="cardModal(${card.id})">
-            <img src="${card.image}" alt="${card.name}" class="w-[351px] h-[226px] p-4 rounded-xl"/>
-            <h3 class="pl-4 my-2 font-bold">${card.name}</h3>
-            <p class="pl-4 pr-1 mb-2">${card.description}</p>
+        <div class="w-[341px] h-full bg-white rounded-xl">
+            <img src="${card.image}" alt="${card.name}" class="w-[351px] h-[226px] p-4 rounded-xl"  onclick="cardModal(${card.id})"/>
+            <h3  onclick="cardModal(${card.id})" class="pl-4 my-2 font-bold">${card.name}</h3>
+            <p  onclick="cardModal(${card.id})" class="pl-4 pr-1 mb-2">${card.description}</p>
             <div class="flex justify-between px-4 mb-3">
-                <button class="btn btn-active bg-[#DCFCE7]">${card.category}</button>
+                <button  onclick="cardModal(${card.id})" class="btn btn-active bg-[#DCFCE7]">${card.category}</button>
                 <p>৳ <span>${card.price}</span></p>
             </div>
             <div class="p-4"><button class="btn text-xl btn-success w-full text-white">Add to Cart</button></div>
