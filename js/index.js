@@ -40,6 +40,42 @@ const cardModalDatils =(card) =>{
     `
     document.getElementById('my_modal_5').showModal();
 }
+
+// const addCard = (id)=>{
+//     alert( 'has been added to the cart')
+// }
+
+
+const addCard = (name) =>{
+    alert(`${name} has been added to the cart.`)
+}
+const addcart = (price, name) => {
+  const cartSection = document.getElementById('cartClass');
+  const div = document.createElement('div');
+  div.innerHTML = `
+    <div class="bg-[#F0FDF4] w-[220px] mx-auto flex justify-between items-center p-3 mb-2 rounded-xl">
+      <div>
+        <h1>${name}</h1>
+        <p>৳ ${price}</p>
+      </div>
+      <div>
+        <i class="fa-regular fa-circle-xmark text-xl cursor-pointer" id='cress'></i>
+      </div>
+    </div>
+  `;
+  
+//   Remove Div 
+
+  const removeBtn = div.querySelector("i");
+  removeBtn.addEventListener("click", () => {
+    div.remove();
+  });
+
+  cartSection.appendChild(div);
+};
+
+
+
 const localcatagorCard = (catagoricard) =>{
     // console.log(catagoricard)
     const creatCatagoriCard=document.getElementById('cata-card')
@@ -52,13 +88,14 @@ const localcatagorCard = (catagoricard) =>{
             <h3  onclick="cardModal(${card.id})" class="pl-4 my-2 font-bold">${card.name}</h3>
             <p  onclick="cardModal(${card.id})" class="pl-4 pr-1 mb-2">${card.description}</p>
             <div class="flex justify-between px-4 mb-3">
-                <button  onclick="cardModal(${card.id})" class="btn btn-active bg-[#DCFCE7]">${card.category}</button>
+                <button onclick="cardModal(${card.id})" class="btn btn-active bg-[#DCFCE7]">${card.category}</button>
                 <p>৳ <span>${card.price}</span></p>
             </div>
-            <div class="p-4"><button class="btn text-xl btn-success w-full text-white">Add to Cart</button></div>
+            <div class="p-4"><button onclick="addCard('${card.name}'); addcart('${card.price}', '${card.name}')" class="btn text-xl btn-success w-full text-white" id='add-cart-${card.id}'>Add to Cart</button></div>
         </div>
         `
         creatCatagoriCard.appendChild(div)
+       
     })
     loading(false);
 }
@@ -78,7 +115,7 @@ const itemCategorySection = (word) =>{
                 <button  onclick="cardModal(${card.id})" class="btn btn-active bg-[#DCFCE7]">${card.category}</button>
                 <p>৳ <span>${card.price}</span></p>
             </div>
-            <div class="p-4"><button class="btn text-xl btn-success w-full text-white">Add to Cart</button></div>
+            <div class="p-4"><button onclick="addCard('${card.name}'); addcart('${card.price}', '${card.name}')" class="btn text-xl btn-success w-full text-white">Add to Cart</button></div>
         </div>
         `
         items.appendChild(div)
