@@ -63,15 +63,26 @@ const addcart = (price, name) => {
       </div>
     </div>
   `;
+  cartSection.appendChild(div);
+
+  const balans=parseInt(document.getElementById('totalBalans').innerText)
+  const treePrice=parseInt(price);
   
-//   Remove Div 
+  const totalBalas=balans+treePrice;
+  document.getElementById('totalBalans').innerText=totalBalas;
+  console.log(totalBalas)
+
+    //  Remove Div 
 
   const removeBtn = div.querySelector("i");
   removeBtn.addEventListener("click", () => {
-    div.remove();
-  });
+    div.remove();  
 
-  cartSection.appendChild(div);
+    // Remove Price 
+    const currentTotal = parseInt(document.getElementById('totalBalans').innerText);
+    document.getElementById('totalBalans').innerText = currentTotal - treePrice;
+  });
+  
 };
 
 
